@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenRPG.API", "OpenRPG.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRPG.Models", "OpenRPG.Models\OpenRPG.Models.csproj", "{111A0860-ADF0-4502-99E5-D7B99A80165D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRPG.DataAccess", "OpenRPG.DataAccess\OpenRPG.DataAccess.csproj", "{CD0E88A4-CAC2-46A6-B244-3AFC16B09759}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{111A0860-ADF0-4502-99E5-D7B99A80165D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{111A0860-ADF0-4502-99E5-D7B99A80165D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{111A0860-ADF0-4502-99E5-D7B99A80165D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD0E88A4-CAC2-46A6-B244-3AFC16B09759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD0E88A4-CAC2-46A6-B244-3AFC16B09759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD0E88A4-CAC2-46A6-B244-3AFC16B09759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD0E88A4-CAC2-46A6-B244-3AFC16B09759}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
