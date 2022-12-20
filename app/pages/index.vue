@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-
+alert('hi')
 </script>
 
 <template>
-  Hi
+   <div>Hellow</div>
 </template>
