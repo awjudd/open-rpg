@@ -1,7 +1,10 @@
 <script lang="ts" setup>
+definePageMeta({
+  layout: "splash",
+});
 
 </script>
 
 <template>
-  Hi
+  Hello
 </template>
