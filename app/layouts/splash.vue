@@ -1,120 +1,152 @@
 <script lang="ts" setup>
 
-const sideBarOpen = ref(false);
+const sideBarClosed = ref(false);
 
 const yearSpan = computed(() => {
-    const current = new Date(); 
+  const current = new Date();
 
-    if(current.getFullYear() > 2022) {
-        return `2022 - ${current.getFullYear()}`;
-    }
+  if (current.getFullYear() > 2023) {
+    return `2023 - ${current.getFullYear()}`;
+  }
 
-    return '2022';
+  return '2023';
 });
 </script>
 
 <template>
-<section class="relative bg-yellowGray-50 overflow-hidden">
-  <nav class="relative z-10 bg-white">
-    <div class="flex px-4 md:px-12 py-6 items-center">
-      <button 
-        class="flex w-14 h-14 mr-12 items-center justify-center navbar-burger border border-gray-50 hover:border-gray-500 transform hover:rotate-45 rounded-full transition duration-300"
-        @click="sideBarOpen = !sideBarOpen"
-        >
-        <svg width="32" height="12" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="2" fill="black"></rect><rect y="10" width="19" height="2" fill="black"></rect></svg>
-      </button>
-      <a class="inline-block text-2xl font-bold" href="#">
-        <logo class="w-1/2 md:w-1/4 h-full" />
-      </a>
-      <div class="hidden lg:flex items-center ml-auto">
-        <div class="mr-12">
-          <ul class="hidden xl:flex items-center">
-            <li class="relative group mr-16">
-              <button class="inline-block text-left text-base font-medium text-black">
-                <div class="flex items-center">
-                  <span class="mr-3">Resources</span>
-                  <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.332 0.999974L10.3887 0.0566406L6.66536 3.77997L5.9987 4.5L5.33203 3.77997L1.6087 0.0566402L0.665365 0.999974L5.9987 6.33331L11.332 0.999974Z" fill="currentColor"></path>
+  <div class="relative bg-gray-50 overflow-hidden">
+    <div :class="{
+      hidden: sideBarClosed
+    }" class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
+      <div class="relative h-full max-w-screen-xl mx-auto">
+        <svg class="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2" width="404"
+          height="784" fill="none" viewBox="0 0 404 784">
+          <defs>
+            <pattern id="f210dbf6-a58d-4871-961e-36d5016a0f49" x="0" y="0" width="20" height="20"
+              patternUnits="userSpaceOnUse">
+              <rect class="text-gray-200" x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+            </pattern>
+          </defs>
+          <rect width="404" height="784" fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"></rect>
+        </svg>
+        <svg
+          class="absolute left-full transform -translate-y-3/4 -translate-x-1/4 md:-translate-y-1/2 lg:-translate-x-1/2"
+          width="404" height="784" fill="none" viewBox="0 0 404 784">
+          <defs>
+            <pattern id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b" x="0" y="0" width="20" height="20"
+              patternUnits="userSpaceOnUse">
+              <rect class="text-gray-200" x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+            </pattern>
+          </defs>
+          <rect width="404" height="784" fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"></rect>
+        </svg>
+      </div>
+    </div>
+    <div class="relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+        <nav class="relative flex items-center justify-between sm:h-10 md:justify-center">
+          <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+            <div class="flex items-center justify-between w-full md:w-auto">
+              <a href="#" aria-label="Home">
+                <logo class="pl-5 h-8 w-auto sm:h-10" alt="" />
+              </a>
+              <div class="-mr-2 flex items-center md:hidden">
+                <button
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                  id="main-menu" type="button" aria-label="Main menu" aria-haspopup="true"
+                  @click="sideBarClosed = !sideBarClosed">
+                  <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                   </svg>
-                </div>
-              </button>
-              <div class="hidden group-hover:block absolute z-20 bottom-0 left-0 w-52 pt-4 transform translate-y-full">
-                <div class="py-4 px-6 bg-white rounded-lg border-2 border-blueGray-900"><a class="block mb-2 text-xs" href="#">Link 1</a><a class="block mb-2 text-xs" href="#">Link 1</a><a class="block text-xs" href="#">Link 1</a></div>
-              </div>
-            </li>
-            <li class="mr-16"><a class="inline-block text-base font-medium text-black" href="#">Community</a></li>
-            <li class="mr-16"><a class="inline-block text-base font-medium text-black" href="#">Story</a></li>
-            <li><a class="inline-block text-base font-medium text-black" href="#">Pricing</a></li>
-          </ul>
-        </div>
-        <div class="w-px h-12 mx-6 bg-gray-50"></div>
-        <a class="inline-flex mr-12 items-center" href="#">
-          <div class="relative w-10 h-10 rounded-full mr-4">
-            <img src="suncealand-assets/images/avatar-girl.png" alt="">
-            <div class="absolute bottom-0 right-0 -mr-px -mb-1 flex w-4 h-4 items-center justify-center rounded-full bg-indigo-500 text-white text-xs font-bold">3</div>
-          </div>
-          <span class="font-medium">Elina</span>
-        </a>
-        <a class="relative group inline-flex h-12 w-24 items-center justify-center font-semibold rounded-lg border border-black overflow-hidden" href="#">
-          <span class="relative z-10 text-black group-hover:text-white transition duration-500">Logout</span>
-          <div class="absolute top-0 left-0 h-full w-28 transform -translate-x-full -ml-1 group-hover:-translate-x-0 bg-black transition duration-500 ease-linear"></div>
-        </a>
-      </div>
-    </div>
-  </nav>
-  <div class="relative pt-28 2xl:pt-60 lg:pb-32">
-    <img class="hidden lg:block absolute top-0 right-0 h-full" src="suncealand-assets/images/background-phone-app-header.png" alt="">
-    <div class="container px-4 mx-auto">
-      <div class="relative">
-        <div class="max-w-lg mx-auto lg:mx-0">
-          <div class="inline-flex items-center mb-8">
-            <span class="inline-block mr-6">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="#7781EE"></rect><rect x="22.9492" y="9.63605" width="2" height="16" rx="1" transform="rotate(45 22.9492 9.63605)" fill="white"></rect><rect x="7.62891" y="17.0431" width="2" height="7.57417" rx="1" transform="rotate(-45 7.62891 17.0431)" fill="white"></rect></svg>
-            </span>
-            <span class="uppercase text-gray-900 font-medium">Create podcasts.</span>
-          </div>
-          <h1 class="text-7xl xs:text-8xl sm:text-10xl 2xl:text-12xl font-heading mb-18">
-            <span>dialogue.</span>
-            <div class="inline-block pr-12 relative">
-              <span class="relative z-10">please.</span>
-              <img class="absolute top-0 left-0 w-full 2xl:mt-6 -ml-4 2xl:-ml-10" src="suncealand-assets/background/green-circle-bg-text.svg" alt="">
-            </div>
-          </h1>
-          <p class="text-xl mb-18">Record your audio and upload it to Suncealand.</p>
-          <a class="group relative inline-block h-16 w-full sm:w-40 bg-blueGray-900 rounded" href="#">
-            <div class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
-              <div class="flex h-full w-full items-center justify-center bg-white border-2 border-blueGray-900 rounded">
-                <span class="text-base font-semibold uppercase">More</span>
+                </button>
               </div>
             </div>
-          </a>
+          </div>
+          <div :class="{
+            hidden: !sideBarClosed
+          }" class="hidden md:flex md:space-x-10"></div>
+          <div :class="{
+            hidden: !sideBarClosed
+          }" class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+            <span class="inline-flex rounded-md shadow"><nuxt-link
+                class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out"
+                to="/auth/register">Register</nuxt-link></span>
+            <span class="inline-flex rounded-md shadow"><nuxt-link
+                class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out"
+                to="/auth/login">Log in</nuxt-link></span>
+          </div>
+        </nav>
+      </div>
+      <div :class="{
+        hidden: !sideBarClosed
+      }" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right">
+        <div class="rounded-lg shadow-md">
+          <div class="rounded-lg bg-white shadow-xs overflow-hidden" role="menu" aria-orientation="vertical"
+            aria-labelledby="main-menu">
+            <div class="px-5 pt-4 flex items-center justify-between">
+              <div>
+                <logo class="h-8 w-auto" alt="" />
+              </div>
+              <div class="-mr-2">
+                <button @click="sideBarClosed = !sideBarClosed"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                  type="button" aria-label="Close menu">
+                  <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <nuxt-link
+                class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out"
+                href="/auth/register" role="menuitem">Register</nuxt-link>
+              <nuxt-link
+                class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out"
+                to="/auth/login" role="menuitem">Log in</nuxt-link>
+            </div>
+          </div>
         </div>
+      </div>
+      <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
+        <div class="text-center">
+          <h2
+            class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+            <span class="mr-1">Choose your Species.</span>
+            <br class="xl:hidden">
+            <span class="text-indigo-600"> Dominate the World.</span>
+          </h2>
+          <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            The game is simple ... choose a species and a class and fight of hordes of baddies to dominate the world.
+          </p>
+          <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+            <div class="rounded-md shadow"><nuxt-link
+                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                to="/auth/register">Start your Adventure!</nuxt-link></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <div class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+      <div class="flex justify-center md:order-2">
+        <a class="ml-6 text-gray-400 hover:text-gray-500" href="https://github.com/awjudd/open-rpg" target="_blank">
+          <span class="sr-only">GitHub</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="mt-8 md:mt-0 md:order-1">
+        <p class="text-center text-base leading-6 text-gray-400">© {{ yearSpan }} Open RPG.
+        </p>
       </div>
     </div>
-    <img class="block lg:hidden pl-10 md:pl-40 mt-16 md:mt-32" src="suncealand-assets/images/background-phone-app-header.png" alt="">
   </div>
-  <div class="navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50" :class="{
-    hidden: sideBarOpen
-  }">
-    <div class="navbar-backdrop fixed inset-0 backdrop-blur-xl backdrop-filter bg-gray-900 bg-opacity-80" @click="sideBarOpen = !sideBarOpen"></div>
-    <nav class="relative pt-8 pb-8 bg-white h-full overflow-y-auto">
-      <div class="flex flex-col px-6 h-full">
-        <a class="inline-block text-2xl font-bold ml-8 mb-16" href="#">
-          <logo class="w-full" />
-        </a>
-        <ul class="w-full mb-auto pb-16">
-        </ul>
-        <div class="w-full">
-          <a class="relative group inline-flex h-12 w-full mb-4 items-center justify-center font-semibold rounded-lg bg-white border border-black" href="#">
-            <span class="text-black">Login</span>
-          </a>
-          <a class="relative inline-flex h-12 w-full mb-4 items-center justify-center font-semibold rounded-lg bg-blue-500" href="#">
-            <span class="text-black">Logout</span>
-          </a>
-          <p class="pl-2 text-sm">{{ yearSpan }} © OpenRPG</p>
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
 </template>

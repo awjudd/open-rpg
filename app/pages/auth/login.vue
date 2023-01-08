@@ -7,23 +7,22 @@ const request = ref({
   email: '',
   password: ''
 });
+
+const submit = async () => {
+  alert('hello')
+}
+
 </script>
 
 <template>
-  <form action="#" method="POST" class="space-y-6">
+  <form action="#" method="POST" class="space-y-6" @submit.prevent="submit">
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-      <div class="mt-1">
-        <input id="email" name="email" type="email" autocomplete="email" required v-model="request.email"
-          class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-      </div>
+      <ui-form-field placeholder="Email" name="email" v-model="request.email" auto-complete="current-email" />
     </div>
 
     <div class="space-y-1">
-      <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-      <div class="mt-1">
-        <ui-input-field auto-complete="current-password" name="password" v-model="request.password" type="password" />
-      </div>
+      <ui-form-field placeholder="Password" name="password" v-model="request.password"
+        auto-complete="current-password" />
     </div>
 
     <div class="flex items-center justify-between">
@@ -34,7 +33,8 @@ const request = ref({
       </div>
 
       <div class="text-sm">
-        <a href="#" class="font-medium text-gray-600 hover:text-gray-500">Forgot your password?</a>
+        <nuxt-link to="/auth/forgot" class="font-medium text-gray-600 hover:text-gray-500">Forgot your
+          password?</nuxt-link>
       </div>
     </div>
 
